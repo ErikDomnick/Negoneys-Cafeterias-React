@@ -1,0 +1,1 @@
+import cardapio from "./cardapio.css"
