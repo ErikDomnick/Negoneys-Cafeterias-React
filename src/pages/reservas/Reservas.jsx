@@ -1,4 +1,4 @@
-import styles from "./Reservas.module.css";
+import styles from "./reservas.module.css";
 
 function Reservas() {
   return (
