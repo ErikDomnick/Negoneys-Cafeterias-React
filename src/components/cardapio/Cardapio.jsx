@@ -57,6 +57,7 @@ function Cardapio({ aoAdicionar }) {
 
   return produtos.map((produto) => (
     <li
+      key={produto.id}
       className={
         produto.disponivel ? styles["prod-disp"] : styles["prod-nao-disp"]
       }
@@ -67,7 +68,10 @@ function Cardapio({ aoAdicionar }) {
         R${parseFloat(produto.preco).toFixed(2)} -{" "}
         {produto.disponivel ? `${produto.unidades} unidades` : "Esgotado"}
       </p>
-      <button onClick={() => aoAdicionar(produto)}>
+      <button
+        onClick={() => aoAdicionar(produto)}
+        disabled={!produto.disponivel}
+      >
         Adicionar ao Carrinho
       </button>
     </li>

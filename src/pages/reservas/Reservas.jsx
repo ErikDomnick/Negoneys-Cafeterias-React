@@ -1,11 +1,11 @@
-import styles from "./reservas.module.css";
+import styles from "./Reservas.module.css";
 
 function Reservas() {
   return (
-    <main className={styles.pagina}>
+    <section className={styles.pagina}>
       <h2>Reservas</h2>
-      <p>Aqui vão o formulário e a lista de reservas.</p>
-    </main>
+      <p>Aqui vai o formulário e a lista de reservas.</p>
+    </section>
   );
 }
 
