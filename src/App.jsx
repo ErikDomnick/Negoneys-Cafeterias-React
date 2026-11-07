@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import NaoEncontrado from "./pages/nao_encontrado/NaoEncontrado";
 import Home from "./pages/home_page/Home";
+import Sobre from "./pages/sobre/Sobre";
+import Reservas from "./pages/reservas/Reservas";
 
 
 function App() {
@@ -22,7 +24,9 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home/>}/>
-            <Route path="/*" element={<NaoEncontrado/>}/>
+            <Route path="/sobre" element={<Sobre/>}/>
+            <Route path="/reservas" element={<Reservas/>}/>
+            <Route path="*" element={<NaoEncontrado/>}/>
           </Routes>
         </main>
         <footer>
