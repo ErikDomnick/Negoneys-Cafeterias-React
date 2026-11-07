@@ -1,0 +1,22 @@
+.prod-disp {
+  text-align: center;
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid rgb(197, 166, 9);
+  padding: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  list-style-type: none;
+}
+
+.prod-nao-disp {
+  text-align: center;
+  background-color: rgb(255, 220, 220);
+  border-radius: 10px;
+  border: 2px solid rgb(216, 75, 40);
+  padding: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  list-style-type: none;
+  color: rgb(143, 46, 22);
+}

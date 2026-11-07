@@ -1,23 +1,37 @@
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-header{
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
   text-align: center;
   color: white;
   background-color: rgb(99, 62, 28);
 }
 
-main{
+main {
   background-color: antiquewhite;
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 1;
+  padding-top: 10px;
 }
 
-footer{
+footer {
   background-color: rgb(99, 62, 28);
   text-align: center;
   color: white;
@@ -25,34 +39,34 @@ footer{
   padding-bottom: 20px;
 }
 
-nav{
+nav {
   background-color: rgb(145, 96, 49);
   padding-top: 12px;
   padding-bottom: 12px;
 }
 
-nav a{
+nav a {
   text-decoration: none;
 }
 
-button{
+button {
   cursor: pointer;
   background-color: rgb(99, 62, 28);
   border-radius: 5px;
   border: 2px solid rgb(99, 62, 28);
   color: white;
   padding: 3px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   height: 30px;
   width: 65px;
 }
 
-button:hover{
+button:hover {
   background-color: rgb(79, 49, 20);
   border-color: rgb(79, 49, 20);
 }
 
-input{
+input {
   background-color: rgb(255, 250, 243);
   padding: 4px;
   border: 2px solid rgb(220, 185, 8);
@@ -61,7 +75,7 @@ input{
   margin-bottom: 7px;
 }
 
-hr{
+hr {
   border: none;
   background-color: rgb(197, 166, 9);
   height: 2px;
@@ -69,11 +83,11 @@ hr{
   margin-bottom: 25px;
 }
 
-header h1{
+header h1 {
   padding: 10px;
 }
 
-h5{
+h5 {
   margin-top: 7px;
   color: rgb(197, 166, 9);
 }
@@ -87,7 +101,7 @@ ul.lista li {
   border-radius: 0 6px 6px 0;
 }
 
-.btnnav{
+.btnnav {
   width: 1000px;
   font-size: 20px;
   border: 2px solid rgb(244, 225, 58);
@@ -99,29 +113,29 @@ ul.lista li {
   padding: 5px;
 }
 
-.btnnav:hover{
+.btnnav:hover {
   background-color: rgb(244, 225, 58);
   color: rgb(99, 62, 28);
 }
 
-.secoes{
+.secoes {
   margin: 33px;
   color: black;
 }
 
-.tituloinformacao{
+.tituloinformacao {
   display: flex;
   flex-direction: column;
 }
 
-.blocos{
+.blocos {
   border-color: 4px solid rgb(150, 80, 50);
   background-color: bisque;
   margin: 20px;
   font-size: 20px;
 }
 
-.article-cardapio{
+.article-cardapio {
   background-color: white;
   border-radius: 10px;
   border: 2px solid rgb(197, 166, 9);
@@ -130,16 +144,16 @@ ul.lista li {
   margin-bottom: 20px;
 }
 
-#frase-motivacional-do-negoneyson{
+#frase-motivacional-do-negoneyson {
   color: rgb(244, 225, 58);
   padding-bottom: 10px;
 }
 
-#sect-msg{
+#sect-msg {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-#sect-reservas{
+#sect-reservas {
   margin: 5px;
 }
