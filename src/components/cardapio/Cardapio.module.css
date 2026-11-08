@@ -7,6 +7,11 @@
   margin-top: 20px;
   margin-bottom: 20px;
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 30px;
+  text-align: left;
 }
 
 .prod-nao-disp {
@@ -19,4 +24,23 @@
   margin-bottom: 20px;
   list-style-type: none;
   color: rgb(143, 46, 22);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 30px;
+  text-align: left;
+}
+
+.botao-adicionar {
+    cursor: pointer;
+    background-color: rgb(99, 62, 28);
+    border-radius: 5px;
+    border: 2px solid rgb(99, 62, 28);
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    height: 35px;
+    transition: 0.25s;
+    width: fit-content;
+    padding: 0 15px;
+    margin-top: 10px;
 }

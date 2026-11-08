@@ -11,7 +11,7 @@ function Home() {
   };
 
   return (
-    <span>
+    <>
       <section className={styles["section-cardapio"]}>
         <h1>Cardápio</h1>
         <hr />
@@ -26,7 +26,7 @@ function Home() {
           <Carrinho compras={compras} />
         </ul>
       </section>
-    </span>
+    </>
   );
 }
 

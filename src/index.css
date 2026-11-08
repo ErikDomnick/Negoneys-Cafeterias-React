@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+:root{
+  --cor-main: rgb(250, 235, 215);
+  --marrom: rgb(99, 62, 28);
+  --marrom-claro: rgb(145, 96, 49);
+}

@@ -1,12 +1,7 @@
-.marginzinho {
-  margin-top: 50px;
-  margin-bottom: 10px;
-}
-
 .section-cardapio {
-  min-width: 700px;
+  width: 700px;
 }
 
 .section-carrinho {
-  min-width: 700px;
+  width: 700px;
 }

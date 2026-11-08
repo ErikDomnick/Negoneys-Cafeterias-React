@@ -1,21 +1,3 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html,
-body,
-#root {
-  height: 100%;
-  margin: 0;
-}
-
-#root {
-  display: flex;
-  flex-direction: column;
-}
-
 header {
   text-align: center;
   color: white;
@@ -23,7 +5,7 @@ header {
 }
 
 main {
-  background-color: antiquewhite;
+  background-color: rgb(250, 235, 215);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -101,7 +83,7 @@ ul.lista li {
   border-radius: 0 6px 6px 0;
 }
 
-.btnnav {
+.botoes-nav {
   width: 1000px;
   font-size: 20px;
   border: 2px solid rgb(244, 225, 58);
@@ -113,7 +95,7 @@ ul.lista li {
   padding: 5px;
 }
 
-.btnnav:hover {
+.botoes-nav:hover {
   background-color: rgb(244, 225, 58);
   color: rgb(99, 62, 28);
 }
@@ -144,7 +126,7 @@ ul.lista li {
   margin-bottom: 20px;
 }
 
-#frase-motivacional-do-negoneyson {
+.slogan {
   color: rgb(244, 225, 58);
   padding-bottom: 10px;
 }
