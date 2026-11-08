@@ -4,7 +4,9 @@ function Carrinho({ compras, removendo }) {
   }
 
   const total = compras.reduce(
-    (soma, item) => soma + item.preco * item.quantidade, 0);
+    (soma, item) => soma + item.preco * item.quantidade,
+    0
+  );
 
   return (
     <>

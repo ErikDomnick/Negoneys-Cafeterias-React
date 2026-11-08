@@ -5,13 +5,30 @@ import Cardapio from "../../components/cardapio/Cardapio";
 
 function Home() {
   const [compras, setCompras] = useState([]);
-
   const adicionar = (produto) => {
-    setCompras([...compras, produto]);
+    setCompras((atual) => {
+      const existente = atual.find((item) => item.id === produto.id);
+
+      if (!existente) {
+        return [...atual, { ...produto, quantidade: 1 }];
+      }
+      if (existente.quantidade >= produto.unidades) {
+        return atual;
+      }
+      return atual.map((item) =>
+        item.id === produto.id
+          ? { ...item, quantidade: item.quantidade + 1 }
+          : item
+      );
+    });
+  };
+
+  const remover = (id) => {
+    setCompras((atual) => atual.filter((item) => item.id !== id));
   };
 
   return (
-    <span>
+    <>
       <section className={styles["section-cardapio"]}>
         <h1>Cardápio</h1>
         <hr />
@@ -23,10 +40,10 @@ function Home() {
         <h1 className={styles.marginzinho}>Carrinho</h1>
         <hr />
         <ul>
-          <Carrinho compras={compras} />
+          <Carrinho compras={compras} removendo={remover} />
         </ul>
       </section>
-    </span>
+    </>
   );
 }
 
