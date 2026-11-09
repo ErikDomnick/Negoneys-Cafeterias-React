@@ -1,71 +1,9 @@
-/*import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Home.module.css";
 import Carrinho from "../../components/carrinho/Carrinho";
 import Cardapio from "../../components/cardapio/Cardapio";
 
-function Home() {
-  const [compras, setCompras] = useState([]);
-
-  const adicionar = (produto) => {
-    setCompras((atual) => {
-      const existente = atual.find((item) => item.id === produto.id);
-
-      if (!existente) {
-        return [...atual, { ...produto, quantidade: 1 }];
-      }
-
-      if (existente.quantidade >= produto.unidades) {
-        return atual;
-      }
-
-      return atual.map((item) => item.id === produto.id ? { ...item, quantidade: item.quantidade + 1 } : item);
-    });
-  };
-
-  const editar = (produto) => {
-    setCompras((atual) => {
-      const existente = atual.find((item) => item.id === produto.id);
-
-      if (!existente) {
-        return [...atual, { ...produto, quantidade: 1 }];
-      }
-
-      
-    });
-  };
-
-  const remover = (id) => {
-    setCompras((atual) => atual.filter((item) => item.id !== id));
-  };
-
-  return (
-    <>
-      <section className={styles["section-cardapio"]}>
-        <h1>Cardápio</h1>
-        <hr />
-        <ul>
-          <Cardapio aoAdicionar={adicionar} aoEditar={editar} />
-        </ul>
-      </section>
-      <section className={styles["section-carrinho"]}>
-        <h1 className={styles.marginzinho}>Carrinho</h1>
-        <hr />
-        <ul>
-          <Carrinho compras={compras} removendo={remover} />
-        </ul>
-      </section>
-    </>
-  );
-}
-
-export default Home;*/
-
-import { useState } from "react";
-import styles from "./Home.module.css";
-import Carrinho from "../../components/carrinho/Carrinho";
-import Cardapio from "../../components/cardapio/Cardapio";
-
-// A lista que antes ficava dentro do Cardapio agora mora aqui.
+// A lista que antes ficava dentro do Cardapio foi jogada pra cá, agora ela ta aq
 const produtosIniciais = [
   {
     id: 1,
@@ -86,7 +24,7 @@ const produtosIniciais = [
   {
     id: 3,
     nome: "Pimenta",
-    desc: "pimenta 🌶️ vremelha 🔴",
+    desc: "pimenta 🌶️🥵🥵🥵 eh vermelha 🔴",
     preco: 4.99,
     unidades: 9,
     disponivel: true,
@@ -117,9 +55,35 @@ const produtosIniciais = [
   },
 ];
 
+// nomes que os dados ficam guardados no navegador (localStorage) guys
+const CHAVE_PRODUTOS = "produtos-negoneys";
+const CHAVE_COMPRAS = "compras-negoneys";
+
+// Lê um dado salvo no navegador. se não tiver nada (ou estiver estragado), ele devolve o valor padrão (valor podrão)
+function lerSalvo(chave, padrao) {
+  try {
+    const salvo = localStorage.getItem(chave);
+    return salvo ? JSON.parse(salvo) : padrao;
+  } catch {
+    return padrao;
+  }
+}
+
 function Home() {
-  const [produtos, setProdutos] = useState(produtosIniciais);
-  const [compras, setCompras] = useState([]);
+  const [produtos, setProdutos] = useState(() =>
+    lerSalvo(CHAVE_PRODUTOS, produtosIniciais)
+  );
+  const [compras, setCompras] = useState(() => lerSalvo(CHAVE_COMPRAS, []));
+
+  // sempre que os produtos mudarem, ele guarda no navegador
+  useEffect(() => {
+    localStorage.setItem(CHAVE_PRODUTOS, JSON.stringify(produtos));
+  }, [produtos]);
+
+  // sempre que o carrinho mudar, ele guarda no navegador
+  useEffect(() => {
+    localStorage.setItem(CHAVE_COMPRAS, JSON.stringify(compras));
+  }, [compras]);
 
   const adicionar = (produto) => {
     setCompras((atual) => {
@@ -145,18 +109,17 @@ function Home() {
     setCompras((atual) => atual.filter((item) => item.id !== id));
   };
 
-  // UPDATE: troca só o produto com esse id pelos dados novos.
+  // UPDATE: troca só o produto com esse id pelos dados novos
   const editar = (id, dados) => {
-    // "disponivel" é derivado do estoque, assim nunca fica inconsistente.
+    // "disponivel" é derivado do estoque, assim nunca fica inconsistente
     const novosDados = { ...dados, disponivel: dados.unidades > 0 };
 
     setProdutos((atual) =>
       atual.map((p) => (p.id === id ? { ...p, ...novosDados } : p))
     );
 
-    // O carrinho guarda uma CÓPIA do produto, então precisa ser atualizado:
-    // novo nome/preço, quantidade limitada ao novo estoque,
-    // e remove o item se o estoque zerou.
+    /* O carrinho guarda uma cópia do produto, então precisa ser atualizado:
+     novo nome ou preço, quantidade limitada ao novo estoque, e remove o item se o estoque zerou.*/
     setCompras((atual) =>
       atual
         .map((item) =>
