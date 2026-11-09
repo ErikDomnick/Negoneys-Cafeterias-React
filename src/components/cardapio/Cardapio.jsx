@@ -1,7 +1,7 @@
-import { useState } from "react";
+/*import { useState } from "react";
 import styles from "./Cardapio.module.css";
 
-function Cardapio({ aoAdicionar }) {
+function Cardapio({ aoAdicionar, aoEditar}) {
   const [produtos] = useState([
     {
       id: 1,
@@ -52,17 +52,79 @@ function Cardapio({ aoAdicionar }) {
       disponivel: true,
     },
   ]);
-
-  //const [ordemConc, setOrdemConc] = useState(concluida);
-
+  
   return produtos.map((produto) => (
     <li key={produto.id} className={produto.disponivel ? styles["prod-disp"] : styles["prod-nao-disp"]}>
       <h2>{produto.nome}</h2>
       <p>{produto.desc}</p>
       <p>R${parseFloat(produto.preco).toFixed(2)} - {" "} {produto.disponivel ? `${produto.unidades} unidades` : "Esgotado"}</p>
       <button className={styles["botao-adicionar"]} onClick={() => aoAdicionar(produto)} disabled={!produto.disponivel}>Adicionar ao Carrinho</button>
+      <button onClick={() => aoEditar(produto)}>Editar</button>
     </li>
   ));
+}
+
+export default Cardapio;*/
+
+import { useState } from "react";
+import styles from "./Cardapio.module.css";
+import FormProduto from "./FormProduto";
+
+// Agora os produtos vêm da Home por props (não ficam mais aqui dentro).
+function Cardapio({ produtos, aoAdicionar, aoEditar }) {
+  // Guarda o id do produto que está sendo editado (ou null).
+  // É estado só de interface, por isso fica aqui e não na Home.
+  const [editandoId, setEditandoId] = useState(null);
+
+  return produtos.map((produto) => {
+    // Se este é o produto em edição, mostra o form NO LUGAR do item.
+    if (produto.id === editandoId) {
+      return (
+        <li key={produto.id} className={styles["prod-disp"]}>
+          <FormProduto
+            produto={produto}
+            aoSalvar={(dados) => {
+              aoEditar(produto.id, dados);
+              setEditandoId(null); // fecha o form
+            }}
+            aoCancelar={() => setEditandoId(null)}
+          />
+        </li>
+      );
+    }
+
+    // Caso contrário, mostra o item normal.
+    return (
+      <li
+        key={produto.id}
+        className={
+          produto.disponivel ? styles["prod-disp"] : styles["prod-nao-disp"]
+        }
+      >
+        <h2>{produto.nome}</h2>
+        <p>{produto.desc}</p>
+        <p>
+          R${parseFloat(produto.preco).toFixed(2)} - {" "}
+          {produto.disponivel ? `${produto.unidades} unidades` : "Esgotado"}
+        </p>
+        <span>
+          <button
+            className={styles["botao-adicionar"]}
+            onClick={() => aoAdicionar(produto)}
+            disabled={!produto.disponivel}
+          >
+            Adicionar ao Carrinho
+          </button>{" "}
+          <button
+            className={styles["botao-form"]}
+            onClick={() => setEditandoId(produto.id)}
+          >
+            Editar
+          </button>
+        </span>
+      </li>
+    );
+  });
 }
 
 export default Cardapio;

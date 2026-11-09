@@ -21,3 +21,79 @@ body,
   --marrom: rgb(99, 62, 28);
   --marrom-claro: rgb(145, 96, 49);
 }
+
+header {
+  text-align: center;
+  color: white;
+  background-color: rgb(99, 62, 28);
+}
+
+main {
+  background-color: rgb(250, 235, 215);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  padding-top: 10px;
+}
+
+footer {
+  background-color: rgb(99, 62, 28);
+  text-align: center;
+  color: white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+nav {
+  background-color: rgb(145, 96, 49);
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  background-color: rgb(99, 62, 28);
+  border-radius: 5px;
+  border: 2px solid rgb(99, 62, 28);
+  color: white;
+  padding: 3px;
+  font-family: "Times New Roman", Times, serif;
+  height: 30px;
+  width: 65px;
+}
+
+button:hover {
+  background-color: rgb(79, 49, 20);
+  border-color: rgb(79, 49, 20);
+}
+
+input {
+  background-color: rgb(255, 250, 243);
+  padding: 4px;
+  border: 2px solid rgb(220, 185, 8);
+  border-radius: 5px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+hr {
+  border: none;
+  background-color: rgb(197, 166, 9);
+  height: 2px;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+
+header h1 {
+  padding: 10px;
+}
+
+h5 {
+  margin-top: 7px;
+  color: rgb(197, 166, 9);
+}

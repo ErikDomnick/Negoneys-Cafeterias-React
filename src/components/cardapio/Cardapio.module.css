@@ -32,15 +32,70 @@
 }
 
 .botao-adicionar {
-    cursor: pointer;
-    background-color: rgb(99, 62, 28);
-    border-radius: 5px;
-    border: 2px solid rgb(99, 62, 28);
-    color: white;
-    font-family: 'Times New Roman', Times, serif;
-    height: 35px;
-    transition: 0.25s;
-    width: fit-content;
-    padding: 0 15px;
-    margin-top: 10px;
+  cursor: pointer;
+  background-color: rgb(99, 62, 28);
+  border-radius: 5px;
+  border: 2px solid rgb(99, 62, 28);
+  color: white;
+  font-family: 'Times New Roman', Times, serif;
+  height: 35px;
+  transition: 0.25s;
+  width: fit-content;
+  padding: 0 15px;
+  margin-top: 10px;
+}
+
+.form-produto {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+ 
+.form-produto label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+ 
+.form-produto input,
+.form-produto textarea {
+  font-weight: normal;
+  font-family: inherit;
+}
+ 
+.form-produto textarea {
+  background-color: rgb(255, 250, 243);
+  padding: 4px;
+  border: 2px solid rgb(220, 185, 8);
+  border-radius: 5px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  resize: vertical;
+}
+ 
+.botoes-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+ 
+/* sobrescreve o width: 65px global dos botões */
+.botao-form {
+  width: fit-content;
+  padding: 0 15px;
+  margin-top: 10px;
+}
+ 
+.botoes-form .botao-form {
+  margin-top: 0;
+}
+ 
+.erro {
+  margin-top: 10px;
+  color: rgb(143, 46, 22);
+  background-color: rgb(255, 220, 220);
+  border-left: 4px solid rgb(216, 75, 40);
+  border-radius: 0 6px 6px 0;
+  padding: 8px 12px;
 }
