@@ -1,14 +1,17 @@
 import { useState } from "react";
 
-function FormReserva({ reservaEditando, salvando, cancelando }) {
+function FormReserva({ reservaEditando, aoSalvar, aoCancelar }) {
   const [nome, setNome] = useState(reservaEditando ? reservaEditando.nome : "");
   const [data, setData] = useState(reservaEditando ? reservaEditando.data : "");
-  const [pessoas, setPessoas] = useState(reservaEditando ? reservaEditando.pessoas : 2);    
+  const [pessoas, setPessoas] = useState(
+    reservaEditando ? reservaEditando.pessoas : 2
+  );
+
   const enviar = (e) => {
     e.preventDefault();
     if (nome.trim() === "") return;
 
-    salvando({ nome: nome.trim(), data, pessoas: Number(pessoas) });
+    aoSalvar({ nome: nome.trim(), data, pessoas: Number(pessoas) });
 
     if (!reservaEditando) {
       setNome("");
@@ -61,7 +64,7 @@ function FormReserva({ reservaEditando, salvando, cancelando }) {
 
       <button type="submit">{reservaEditando ? "Salvar" : "Reservar"}</button>
       {reservaEditando && (
-        <button type="button" onClick={cancelando}>
+        <button type="button" onClick={aoCancelar}>
           Cancelar
         </button>
       )}
