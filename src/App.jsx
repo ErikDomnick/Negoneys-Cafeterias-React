@@ -19,15 +19,9 @@ function App() {
             <em>Nossos produtos, seu sorriso</em>
           </p>
           <nav>
-            <Link to="/" className={styles["botoes-nav"]}>
-              Home
-            </Link>
-            <Link to="/sobre" className={styles["botoes-nav"]}>
-              Sobre
-            </Link>
-            <Link to="/reservas" className={styles["botoes-nav"]}>
-              Reservas
-            </Link>
+            <Link to="/" className={styles["botoes-nav"]}>Home</Link>
+            <Link to="/sobre" className={styles["botoes-nav"]}>Sobre</Link>
+            <Link to="/reservas" className={styles["botoes-nav"]}>Reservas</Link>
           </nav>
         </header>
 
