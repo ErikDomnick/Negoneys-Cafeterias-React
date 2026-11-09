@@ -55,8 +55,8 @@ const produtosIniciais = [
   },
 ];
 
-const CHAVE_PRODUTOS = "produtos-negoneys";
-const CHAVE_COMPRAS = "compras-negoneys";
+const CHAVE_CARDAPIO = "cardapio-negoneys";
+const CHAVE_CARRINHO = "carrinho-negoneys";
 
 function lerSalvo(chave, padrao) {
   try {
@@ -70,15 +70,15 @@ function lerSalvo(chave, padrao) {
 function Home() {
   useTitulo("Home");
 
-  const [produtos, setProdutos] = useState(() => lerSalvo(CHAVE_PRODUTOS, produtosIniciais));
-  const [compras, setCompras] = useState(() => lerSalvo(CHAVE_COMPRAS, []));
+  const [produtos, setProdutos] = useState(() => lerSalvo(CHAVE_CARDAPIO, produtosIniciais));
+  const [compras, setCompras] = useState(() => lerSalvo(CHAVE_CARRINHO, []));
 
   useEffect(() => {
-    localStorage.setItem(CHAVE_PRODUTOS, JSON.stringify(produtos));
+    localStorage.setItem(CHAVE_CARDAPIO, JSON.stringify(produtos));
   }, [produtos]);
 
   useEffect(() => {
-    localStorage.setItem(CHAVE_COMPRAS, JSON.stringify(compras));
+    localStorage.setItem(CHAVE_CARRINHO, JSON.stringify(compras));
   }, [compras]);
 
   const adicionar = (produto) => {
@@ -93,7 +93,7 @@ function Home() {
         return atual;
       }
 
-      return atual.map((item) => (item.id === produto.id ? { ...item, quantidade: item.quantidade + 1 } : item));
+      return atual.map((item) => item.id === produto.id ? { ...item, quantidade: item.quantidade++ } : item);
     });
   };
 
@@ -110,12 +110,7 @@ function Home() {
       atual
         .map((item) =>
           item.id === id
-            ? {
-                ...item,
-                ...novosDados,
-                quantidade: Math.min(item.quantidade, novosDados.unidades),
-              }
-            : item,
+            ? {...item, ...novosDados, quantidade: Math.min(item.quantidade, novosDados.unidades)}: item,
         )
         .filter((item) => item.quantidade > 0),
     );

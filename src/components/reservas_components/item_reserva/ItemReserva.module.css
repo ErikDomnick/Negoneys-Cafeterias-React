@@ -1,4 +1,3 @@
-/* Cada reserva: mesmo "cartão" dos itens do carrinho (fundo branco + borda dourada) */
 .item {
   display: flex;
   justify-content: space-between;

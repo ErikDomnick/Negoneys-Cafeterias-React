@@ -1,4 +1,3 @@
-/* O <main> já é coluna e centralizado no index.css, então esse container refaz a linha só pra essa página */
 .container-sobre {
   width: 100%;
   display: flex;

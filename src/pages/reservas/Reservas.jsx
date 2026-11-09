@@ -1,7 +1,3 @@
-/*é a tela das reservas e o componente pai ele guarda a lista reservas 
-e qual está sendo editada, ele tbb tem as funções salvar (ele cria ou edita) 
-e remover, e guarda tudo no localStorage.*/
-
 import { useState, useEffect } from "react";
 import styles from "./Reservas.module.css";
 import FormReserva from "../../components/reservas_components/form_reserva/FormReserva";
@@ -29,7 +25,6 @@ function Reservas() {
     localStorage.setItem(CHAVE, JSON.stringify(reservas));
   }, [reservas]);
 
-  // ao clicar em Editar, sobe a tela até o formulário (a lista fica embaixo dele)
   useEffect(() => {
     if (editando) window.scrollTo({ top: 0, behavior: "smooth" });
   }, [editando]);
