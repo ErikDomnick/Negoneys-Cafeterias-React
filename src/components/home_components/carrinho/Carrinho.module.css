@@ -1,13 +1,12 @@
-/* Cada item do carrinho: mesmo "cartão" do cardápio (fundo branco + borda dourada) */
 .item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 15px;
   list-style-type: none;
-  background-color: white;
-  border: 2px solid rgb(197, 166, 9);
-  border-radius: 10px;
+  background-color: var(--branco);
+  border: 2px solid var(--dourado);
+  border-radius: var(--raio-card);
   padding: 15px 30px;
   margin-top: 12px;
   margin-bottom: 12px;
@@ -25,7 +24,7 @@
 }
 
 .detalhe {
-  color: rgb(145, 96, 49);
+  color: var(--marrom-claro);
 }
 
 .direita {
@@ -39,23 +38,21 @@
   white-space: nowrap;
 }
 
-/* sobrescreve o width: 65px do button global */
 .botao-remover {
   width: fit-content;
   padding: 0 15px;
   height: 35px;
-  transition: 0.25s;
+  transition: var(--transicao);
 }
 
-/* Linha do total: faixa marrom, combinando com o header/footer */
 .total {
   display: flex;
   justify-content: space-between;
   align-items: center;
   list-style-type: none;
-  background-color: rgb(99, 62, 28);
-  color: white;
-  border-radius: 10px;
+  background-color: var(--marrom);
+  color: var(--branco);
+  border-radius: var(--raio-card);
   padding: 15px 30px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -63,24 +60,46 @@
 }
 
 .total-valor {
-  color: rgb(244, 225, 58);
+  color: var(--amarelo);
   font-weight: bold;
 }
 
-/* Carrinho vazio */
+.area-comprar {
+  list-style-type: none;
+  margin-bottom: 20px;
+}
+
+.botao-comprar {
+  cursor: pointer;
+  width: 100%;
+  height: 45px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: var(--fonte-botao);
+  background-color: var(--amarelo);
+  color: var(--marrom);
+  border: 2px solid var(--dourado);
+  border-radius: var(--raio-card);
+  transition: var(--transicao);
+}
+
+.botao-comprar:hover {
+  background-color: var(--dourado);
+  color: var(--branco);
+}
+
 .vazio {
   list-style-type: none;
   text-align: center;
-  background-color: rgb(255, 250, 243);
-  color: rgb(145, 96, 49);
-  border: 2px dashed rgb(197, 166, 9);
-  border-radius: 10px;
+  background-color: var(--creme);
+  color: var(--marrom-claro);
+  border: 2px dashed var(--dourado);
+  border-radius: var(--raio-card);
   padding: 20px 30px;
   margin-top: 12px;
   margin-bottom: 12px;
 }
 
-/* Telas pequenas: empilha nome e botão */
 @media (max-width: 600px) {
   .item {
     flex-direction: column;

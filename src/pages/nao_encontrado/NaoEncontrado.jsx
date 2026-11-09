@@ -1,14 +1,10 @@
-
-//tela do 404 piá ;-;
-
 import styles from "./NaoEncontrado.module.css";
+import useTitulo from "../../hooks/useTitulo";
 
-function naoEncontrado() {
-  return (
-    <h1 className={styles["deixar-centro"]}>
-      404 (Not Found) - Página não encontrada
-    </h1>
-  );
+function NaoEncontrado() {
+  useTitulo("Página não encontrada");
+
+  return <h1 className={styles["deixar-centro"]}>404 (Not Found) - Página não encontrada</h1>;
 }
 
-export default naoEncontrado;
+export default NaoEncontrado;

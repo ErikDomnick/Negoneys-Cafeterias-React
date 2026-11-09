@@ -16,20 +16,40 @@ body,
   flex-direction: column;
 }
 
-:root{
+:root {
+  /* cores */
   --cor-main: rgb(250, 235, 215);
   --marrom: rgb(99, 62, 28);
   --marrom-claro: rgb(145, 96, 49);
+  --marrom-escuro: rgb(79, 49, 20);
+  --marrom-foto: rgb(144, 94, 54);
+  --dourado: rgb(197, 166, 9);
+  --dourado-input: rgb(220, 185, 8);
+  --amarelo: rgb(244, 225, 58);
+  --creme: rgb(255, 250, 243);
+  --branco: white;
+
+  /* cores de erro / produto esgotado */
+  --erro-fundo: rgb(255, 220, 220);
+  --erro-borda: rgb(216, 75, 40);
+  --erro-texto: rgb(143, 46, 22);
+
+  /* medidas e outros */
+  --raio-pequeno: 5px;
+  --raio-card: 10px;
+  --largura-secao: 700px;
+  --transicao: 0.25s;
+  --fonte-botao: "Times New Roman", Times, serif;
 }
 
 header {
   text-align: center;
-  color: white;
-  background-color: rgb(99, 62, 28);
+  color: var(--branco);
+  background-color: var(--marrom);
 }
 
 main {
-  background-color: rgb(250, 235, 215);
+  background-color: var(--cor-main);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,15 +58,15 @@ main {
 }
 
 footer {
-  background-color: rgb(99, 62, 28);
+  background-color: var(--marrom);
   text-align: center;
-  color: white;
+  color: var(--branco);
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
 nav {
-  background-color: rgb(145, 96, 49);
+  background-color: var(--marrom-claro);
   padding-top: 12px;
   padding-bottom: 12px;
 }
@@ -57,33 +77,33 @@ nav a {
 
 button {
   cursor: pointer;
-  background-color: rgb(99, 62, 28);
-  border-radius: 5px;
-  border: 2px solid rgb(99, 62, 28);
-  color: white;
+  background-color: var(--marrom);
+  border-radius: var(--raio-pequeno);
+  border: 2px solid var(--marrom);
+  color: var(--branco);
   padding: 3px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: var(--fonte-botao);
   height: 30px;
   width: 65px;
 }
 
 button:hover {
-  background-color: rgb(79, 49, 20);
-  border-color: rgb(79, 49, 20);
+  background-color: var(--marrom-escuro);
+  border-color: var(--marrom-escuro);
 }
 
 input {
-  background-color: rgb(255, 250, 243);
+  background-color: var(--creme);
   padding: 4px;
-  border: 2px solid rgb(220, 185, 8);
-  border-radius: 5px;
+  border: 2px solid var(--dourado-input);
+  border-radius: var(--raio-pequeno);
   margin-top: 7px;
   margin-bottom: 7px;
 }
 
 hr {
   border: none;
-  background-color: rgb(197, 166, 9);
+  background-color: var(--dourado);
   height: 2px;
   margin-top: 10px;
   margin-bottom: 25px;
@@ -95,5 +115,5 @@ header h1 {
 
 h5 {
   margin-top: 7px;
-  color: rgb(197, 166, 9);
+  color: var(--dourado);
 }

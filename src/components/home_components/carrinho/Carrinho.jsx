@@ -1,13 +1,10 @@
 import styles from "./Carrinho.module.css";
 
-function Carrinho({ compras, removendo }) {
+function Carrinho({ compras, removendo, aoComprar }) {
   if (compras.length === 0) {
     return <li className={styles["vazio"]}>Carrinho vazio.</li>;
   }
-  const total = compras.reduce(
-    (soma, item) => soma + item.preco * item.quantidade,
-    0
-  );
+  const total = compras.reduce((soma, item) => soma + item.preco * item.quantidade, 0);
   return (
     <>
       {compras.map((item) => (
@@ -20,13 +17,8 @@ function Carrinho({ compras, removendo }) {
           </div>
 
           <div className={styles["direita"]}>
-            <span className={styles["subtotal"]}>
-              R${(item.preco * item.quantidade).toFixed(2)}
-            </span>
-            <button
-              className={styles["botao-remover"]}
-              onClick={() => removendo(item.id)}
-            >
+            <span className={styles["subtotal"]}>R${(item.preco * item.quantidade).toFixed(2)}</span>
+            <button className={styles["botao-remover"]} onClick={() => removendo(item.id)}>
               Remover
             </button>
           </div>
@@ -36,6 +28,12 @@ function Carrinho({ compras, removendo }) {
       <li className={styles["total"]}>
         <span>Total</span>
         <span className={styles["total-valor"]}>R${total.toFixed(2)}</span>
+      </li>
+
+      <li className={styles["area-comprar"]}>
+        <button className={styles["botao-comprar"]} onClick={aoComprar}>
+          Comprar
+        </button>
       </li>
     </>
   );

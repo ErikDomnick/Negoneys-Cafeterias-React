@@ -1,0 +1,52 @@
+/* Cada reserva: mesmo "cartão" dos itens do carrinho (fundo branco + borda dourada) */
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  list-style-type: none;
+  background-color: var(--branco);
+  border: 2px solid var(--dourado);
+  border-radius: var(--raio-card);
+  padding: 15px 30px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nome {
+  font-size: 20px;
+}
+
+.detalhe {
+  color: var(--marrom-claro);
+}
+
+.botoes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.botao {
+  width: fit-content;
+  padding: 0 15px;
+  height: 35px;
+  transition: var(--transicao);
+}
+
+@media (max-width: 600px) {
+  .item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .botoes {
+    width: 100%;
+  }
+}

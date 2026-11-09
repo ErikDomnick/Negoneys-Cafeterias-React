@@ -18,12 +18,7 @@ function FormProduto({ produto, aoSalvar, aoCancelar }) {
     e.preventDefault();
 
     // 1) Todos os campos preenchidos?
-    if (
-      nome.trim() === "" ||
-      desc.trim() === "" ||
-      preco.trim() === "" ||
-      unidades.trim() === ""
-    ) {
+    if (nome.trim() === "" || desc.trim() === "" || preco.trim() === "" || unidades.trim() === "") {
       setErro("Preencha todos os campos antes de terminar.");
       return;
     }
@@ -57,53 +52,29 @@ function FormProduto({ produto, aoSalvar, aoCancelar }) {
     <form onSubmit={enviar} noValidate className={styles["form-produto"]}>
       <label>
         Nome
-        <input
-          type="text"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-        />
+        <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} />
       </label>
 
       <label>
         Descrição
-        <textarea
-          rows="3"
-          value={desc}
-          onChange={(e) => setDesc(e.target.value)}
-        />
+        <textarea rows="3" value={desc} onChange={(e) => setDesc(e.target.value)} />
       </label>
 
       <label>
         Preço (R$)
-        <input
-          type="number"
-          min="0"
-          step="0.01"
-          value={preco}
-          onChange={(e) => setPreco(e.target.value)}
-        />
+        <input type="number" min="0" step="0.01" value={preco} onChange={(e) => setPreco(e.target.value)} />
       </label>
 
       <label>
         Unidades em estoque
-        <input
-          type="number"
-          min="0"
-          step="1"
-          value={unidades}
-          onChange={(e) => setUnidades(e.target.value)}
-        />
+        <input type="number" min="0" step="1" value={unidades} onChange={(e) => setUnidades(e.target.value)} />
       </label>
 
       <div className={styles["botoes-form"]}>
         <button type="submit" className={styles["botao-form"]}>
           Terminar
         </button>
-        <button
-          type="button"
-          className={styles["botao-form"]}
-          onClick={aoCancelar}
-        >
+        <button type="button" className={styles["botao-form"]} onClick={aoCancelar}>
           Cancelar
         </button>
       </div>
@@ -111,7 +82,8 @@ function FormProduto({ produto, aoSalvar, aoCancelar }) {
       {erro && (
         <p className={styles["erro"]} role="alert">
           {erro}
-        </p>)}
+        </p>
+      )}
     </form>
   );
 }

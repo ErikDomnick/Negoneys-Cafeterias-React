@@ -1,7 +1,4 @@
-.section-cardapio {
-  width: 700px;
-}
-
+.section-cardapio,
 .section-carrinho {
-  width: 700px;
+  width: var(--largura-secao);
 }

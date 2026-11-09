@@ -1,0 +1,21 @@
+.section-reservar,
+.section-reservas {
+  width: var(--largura-secao);
+  max-width: 100%;
+}
+
+.lista {
+  list-style-type: none;
+}
+
+.vazio {
+  list-style-type: none;
+  text-align: center;
+  background-color: var(--creme);
+  color: var(--marrom-claro);
+  border: 2px dashed var(--dourado);
+  border-radius: var(--raio-card);
+  padding: 20px 30px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}

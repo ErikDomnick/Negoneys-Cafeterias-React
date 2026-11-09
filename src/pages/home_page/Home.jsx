@@ -1,14 +1,9 @@
-/*eh a "cabeça" da tela piá, guarda so estados e 
-tem as funções add, remover e editar do projeto. 
-Além de tudo passo para o carrinho em formjato de props*/
-
-
 import { useState, useEffect } from "react";
 import styles from "./Home.module.css";
-import Carrinho from "../../components/carrinho/Carrinho";
-import Cardapio from "../../components/cardapio/Cardapio";
+import Carrinho from "../../components/home_components/carrinho/Carrinho";
+import Cardapio from "../../components/home_components/cardapio/Cardapio";
+import useTitulo from "../../hooks/useTitulo";
 
-// A lista que antes ficava dentro do Cardapio foi jogada pra cá, agora ela ta aq
 const produtosIniciais = [
   {
     id: 1,
@@ -60,11 +55,9 @@ const produtosIniciais = [
   },
 ];
 
-// nomes que os dados ficam guardados no navegador (localStorage) guys
 const CHAVE_PRODUTOS = "produtos-negoneys";
 const CHAVE_COMPRAS = "compras-negoneys";
 
-// Lê um dado salvo no navegador. se não tiver nada (ou estiver estragado), ele devolve o valor padrão (valor podrão)
 function lerSalvo(chave, padrao) {
   try {
     const salvo = localStorage.getItem(chave);
@@ -75,17 +68,15 @@ function lerSalvo(chave, padrao) {
 }
 
 function Home() {
-  const [produtos, setProdutos] = useState(() =>
-    lerSalvo(CHAVE_PRODUTOS, produtosIniciais)
-  );
+  useTitulo("Home");
+
+  const [produtos, setProdutos] = useState(() => lerSalvo(CHAVE_PRODUTOS, produtosIniciais));
   const [compras, setCompras] = useState(() => lerSalvo(CHAVE_COMPRAS, []));
 
-  // sempre que os produtos mudarem, ele guarda no navegador
   useEffect(() => {
     localStorage.setItem(CHAVE_PRODUTOS, JSON.stringify(produtos));
   }, [produtos]);
 
-  // sempre que o carrinho mudar, ele guarda no navegador
   useEffect(() => {
     localStorage.setItem(CHAVE_COMPRAS, JSON.stringify(compras));
   }, [compras]);
@@ -102,11 +93,7 @@ function Home() {
         return atual;
       }
 
-      return atual.map((item) =>
-        item.id === produto.id
-          ? { ...item, quantidade: item.quantidade + 1 }
-          : item
-      );
+      return atual.map((item) => (item.id === produto.id ? { ...item, quantidade: item.quantidade + 1 } : item));
     });
   };
 
@@ -114,17 +101,11 @@ function Home() {
     setCompras((atual) => atual.filter((item) => item.id !== id));
   };
 
-  // UPDATE: troca só o produto com esse id pelos dados novos
   const editar = (id, dados) => {
-    // "disponivel" é derivado do estoque, assim nunca fica inconsistente
     const novosDados = { ...dados, disponivel: dados.unidades > 0 };
 
-    setProdutos((atual) =>
-      atual.map((p) => (p.id === id ? { ...p, ...novosDados } : p))
-    );
+    setProdutos((atual) => atual.map((p) => (p.id === id ? { ...p, ...novosDados } : p)));
 
-    /* O carrinho guarda uma cópia do produto, então precisa ser atualizado:
-     novo nome ou preço, quantidade limitada ao novo estoque, e remove o item se o estoque zerou.*/
     setCompras((atual) =>
       atual
         .map((item) =>
@@ -134,10 +115,26 @@ function Home() {
                 ...novosDados,
                 quantidade: Math.min(item.quantidade, novosDados.unidades),
               }
-            : item
+            : item,
         )
-        .filter((item) => item.quantidade > 0)
+        .filter((item) => item.quantidade > 0),
     );
+  };
+
+  const comprar = () => {
+    if (compras.length === 0) return;
+
+    setProdutos((atual) =>
+      atual.map((p) => {
+        const itemComprado = compras.find((item) => item.id === p.id);
+        if (!itemComprado) return p;
+
+        const novasUnidades = Math.max(0, p.unidades - itemComprado.quantidade);
+        return { ...p, unidades: novasUnidades, disponivel: novasUnidades > 0 };
+      }),
+    );
+
+    setCompras([]);
   };
 
   return (
@@ -146,18 +143,14 @@ function Home() {
         <h1>Cardápio</h1>
         <hr />
         <ul>
-          <Cardapio
-            produtos={produtos}
-            aoAdicionar={adicionar}
-            aoEditar={editar}
-          />
+          <Cardapio produtos={produtos} aoAdicionar={adicionar} aoEditar={editar} />
         </ul>
       </section>
       <section className={styles["section-carrinho"]}>
-        <h1 className={styles.marginzinho}>Carrinho</h1>
+        <h1>Carrinho</h1>
         <hr />
         <ul>
-          <Carrinho compras={compras} removendo={remover} />
+          <Carrinho compras={compras} removendo={remover} aoComprar={comprar} />
         </ul>
       </section>
     </>

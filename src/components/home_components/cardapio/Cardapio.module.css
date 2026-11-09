@@ -1,0 +1,85 @@
+.prod-disp,
+.prod-nao-disp {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  list-style-type: none;
+  border-radius: var(--raio-card);
+  padding: 20px 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.prod-disp {
+  background-color: var(--branco);
+  border: 2px solid var(--dourado);
+}
+
+.prod-nao-disp {
+  background-color: var(--erro-fundo);
+  border: 2px solid var(--erro-borda);
+  color: var(--erro-texto);
+}
+
+.botao-adicionar {
+  height: 35px;
+  width: fit-content;
+  padding: 0 15px;
+  margin-top: 10px;
+  transition: var(--transicao);
+}
+
+.form-produto {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-produto label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.form-produto input,
+.form-produto textarea {
+  font-weight: normal;
+  font-family: inherit;
+}
+
+.form-produto textarea {
+  background-color: var(--creme);
+  padding: 4px;
+  border: 2px solid var(--dourado-input);
+  border-radius: var(--raio-pequeno);
+  margin-top: 7px;
+  margin-bottom: 7px;
+  resize: vertical;
+}
+
+.botoes-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.botao-form {
+  width: fit-content;
+  padding: 0 15px;
+  margin-top: 10px;
+}
+
+.botoes-form .botao-form {
+  margin-top: 0;
+}
+
+.erro {
+  margin-top: 10px;
+  color: var(--erro-texto);
+  background-color: var(--erro-fundo);
+  border-left: 4px solid var(--erro-borda);
+  border-radius: 0 6px 6px 0;
+  padding: 8px 12px;
+}
