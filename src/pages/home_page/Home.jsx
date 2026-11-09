@@ -1,3 +1,8 @@
+/*eh a "cabeça" da tela piá, guarda so estados e 
+tem as funções add, remover e editar do projeto. 
+Além de tudo passo para o carrinho em formjato de props*/
+
+
 import { useState, useEffect } from "react";
 import styles from "./Home.module.css";
 import Carrinho from "../../components/carrinho/Carrinho";

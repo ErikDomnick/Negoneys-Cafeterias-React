@@ -1,3 +1,7 @@
+/*formulário controlado de nome, data e numero de pessoas ele serve para criar e para editar, 
+e muda titulo e botões conforme o modo.*/
+
+
 import { useState } from "react";
 
 function FormReserva({ reservaEditando, aoSalvar, aoCancelar }) {

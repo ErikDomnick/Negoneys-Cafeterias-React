@@ -1,3 +1,6 @@
+/*mostra uma reserva, nome e data no formato dia/mes/ano, pessoa ou pessoas piá e os botões editar e remover.*/
+
+
 function ItemReserva({ reserva, aoEditar, aoRemover }) {
   //split eh a tesoura, ele corta onde tiver o "-", exemplo a questão da data 2026-11-09
   //o reverse ele vai inverter, ent vai ficar 09 11 e 2026

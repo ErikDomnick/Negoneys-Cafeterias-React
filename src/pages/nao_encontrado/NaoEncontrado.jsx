@@ -1,3 +1,6 @@
+
+//tela do 404 piá ;-;
+
 import styles from "./NaoEncontrado.module.css";
 
 function naoEncontrado() {

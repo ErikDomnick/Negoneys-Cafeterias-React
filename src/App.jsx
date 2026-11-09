@@ -1,3 +1,6 @@
+/*guarda o cabeçalho do projeto com o menu, rodapé e rotas para o 404, oukay my gazes <3*/
+
+
 //import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 

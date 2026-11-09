@@ -1,3 +1,6 @@
+/*FormProduto, eh o formulario controlado, 
+ele valida as operações e tals, tipo, espaçõ vazio, valor negativo e tals*/
+
 import { useState } from "react";
 import styles from "./Cardapio.module.css";
 

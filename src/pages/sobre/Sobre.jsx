@@ -1,3 +1,5 @@
+//pagina de texto sobre a cafeteria
+
 function Sobre() {
   return (
     <section>

@@ -1,3 +1,8 @@
+/*é a tela das reservas e o componente pai ele guarda a lista reservas 
+e qual está sendo editada, ele tbb tem as funções salvar (ele cria ou edita) 
+e remover, e guarda tudo no localStorage.*/
+
+
 import { useState, useEffect } from "react";
 import styles from "./Reservas.module.css";
 import FormReserva from "../../components/reserva/FormReserva";
